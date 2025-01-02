@@ -2,31 +2,18 @@ require_relative 'lib/hashset'
 require_relative 'lib/linked_list'
 require_relative 'lib/tree'
 
-hash = HashSet.new
+list = (Array.new(15) { rand(1..100) })
+tree = Tree.new list
+p tree.balanced?
+p tree.level_order, tree.inorder, tree.preorder, tree.postorder
 
-hash.set 1
-hash.set 3
-hash.set 6
-hash.set 4
-hash.set 5
-hash.set 2
-hash.set 9
-hash.set 3
-hash.set 2
-hash.set 3
-hash.set 7
-hash.set 8
-hash.set 10
-hash.set 12
-hash.set 13
-hash.set 14
-hash.set 15
-hash.set 0
-hash.set 11
-hash.set 77
+insertions = (Array.new(30) { rand(100..200) })
+insertions.each {|number| tree.insert number}
 
-list = hash.entries
+p tree.balanced?
+tree.pretty_print
+tree.rebalance
+p tree.balanced?
+tree.pretty_print
 
-puts list
-list.sort
-puts list.sort
+p tree.level_order, tree.inorder, tree.preorder, tree.postorder

@@ -50,6 +50,12 @@ class LinkedList
   end
 
   def prepend value
+
+    if self.size == 0
+      @head.value = value
+      return
+    end
+    
     aux_ptr = @head.dup
     @head = Node.new value
     @head.next_node = aux_ptr
